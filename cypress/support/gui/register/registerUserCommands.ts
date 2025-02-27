@@ -1,9 +1,5 @@
 import { faker } from '@faker-js/faker';
 
-Cypress.Commands.add('clickBtnSignIn', () => {
-  cy.get('.login').click();
-});
-
 Cypress.Commands.add('insertEmail', (email) => {
   cy.get('#email_create').type(email);
 });
@@ -39,7 +35,7 @@ Cypress.Commands.add('clickBtnRegister', () => {
 });
 
 Cypress.Commands.add('registerNewUser', (user) => {
-  cy.clickBtnSignIn();
+  cy.clickMenuSignIn();
   cy.insertEmail(user.email);
   cy.clickBtnCreateAnAccount();
   cy.selectTitle();
