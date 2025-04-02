@@ -1,0 +1,20 @@
+{
+   "address1": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "Arizona",
+      "postcode": "12345",
+      "phone": "1234567890",
+      "mobile": "0987654321",
+      "alias": "Home Address"
+   },
+   "address2": {
+      "street": "456 Oak Rd",
+      "city": "Somewhere",
+      "state": "Arizona",
+      "postcode": "54321",
+      "phone": "0987654321",
+      "mobile": "1234567890",
+      "alias": "Work Address"
+   }
+}
