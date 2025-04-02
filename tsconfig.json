@@ -1,12 +1,18 @@
 {
-    "compilerOptions": {
+   "compilerOptions": {
       "target": "es6",
       "module": "commonjs",
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
-      "types": ["cypress", "node"]
-    },
-    "include": ["cypress/**/*.ts"]
+      "types": [
+         "cypress",
+         "node"
+      ],
+      "resolveJsonModule": true,
+   },
+   "include": [
+      "cypress/**/*.ts"
+   ]
 }
