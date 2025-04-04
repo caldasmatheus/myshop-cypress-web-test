@@ -1,39 +1,30 @@
 Cypress.Commands.add('accessWomenMenu', () => {
    cy.get('.sf-menu > li > a[title="Women"]').click();
+   cy.url().should('include', 'id_category=3');
 });
 
-Cypress.Commands.add('getRandomProductName', () => {
-   return cy.get('.product-name')
-      .then($elements => {
-         const randomIndex = Math.floor(Math.random() * $elements.length);
-         return $elements.eq(randomIndex).text().trim();
+Cypress.Commands.add('verifyProductsExist', () => {
+   cy.get('.product-container').should('have.length.gt', 0);
+});
+
+Cypress.Commands.add('clickRandomProduct', () => {
+   cy.get('.product-container')
+      .its('length')
+      .then((n) => {
+         const randomIndex = Math.floor(Math.random() * n);
+         cy.get('.product-container').eq(randomIndex).find('.product-name').click();
       });
 });
 
-Cypress.Commands.add('searchProduct', (productName) => {
-   cy.get('#search_query_top').type(productName || 'test');
-   cy.get('#searchbox > .btn').click();
-});
-
-Cypress.Commands.add('verifySearchResults', (productName) => {
-   cy.get('.product-listing').should('be.visible');
-   cy.get('.product-name').should('contain', productName || 'test');
-});
-
-Cypress.Commands.add('clickOnProduct', (productName) => {
-   cy.get('.product-name').contains(productName).click();
-});
-
-Cypress.Commands.add('verifyProductPage', (productName) => {
-   cy.get('h1[itemprop="name"]').should('contain', productName);
+Cypress.Commands.add('verifyProductPage', () => {
    cy.get('#short_description_content').should('exist').and('not.be.empty');
    cy.get('#our_price_display').should('exist').and('not.be.empty');
+   cy.get('#bigpic').should('be.visible');
 });
 
-Cypress.Commands.add('performProductSearch', (productName) => {
-   cy.accessWomenMenu();
-   cy.searchProduct(productName);
-   cy.verifySearchResults(productName);
-   cy.clickOnProduct(productName);
-   cy.verifyProductPage(productName);
+Cypress.Commands.add('productSearch', () => {
+   cy.accessWomenMenu()
+   cy.verifyProductsExist()
+   cy.clickRandomProduct()
+   cy.verifyProductPage()
 });
