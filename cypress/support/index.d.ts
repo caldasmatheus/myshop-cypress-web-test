@@ -26,11 +26,9 @@ declare namespace Cypress {
       submitAddress(): Chainable<void>;
       verifyAddress(actualAddress: Cypress.Address, expectedAddress: Cypress.Address): Chainable<void>;
       accessWomenMenu(): Chainable<void>;
-      getRandomProductName(): Chainable<string>;
-      searchProduct(productName: string): Chainable<void>;
-      verifySearchResults(productName: string): Chainable<void>;
-      clickOnProduct(productName: string): Chainable<void>;
-      verifyProductPage(productName: string): Chainable<void>;
-      performProductSearch(productName: string): Chainable<void>;
+      verifyProductsExist(): Chainable<string>;
+      clickRandomProduct(): Chainable<string>;
+      verifyProductPage(): Chainable<string>;
+      productSearch(): Chainable<void>;
    }
 }
